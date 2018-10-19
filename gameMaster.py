@@ -27,27 +27,32 @@ def attack_round(attacker, target):
     print("{} | {}".format( attacker_string
                           , target_string))
 
+def on_KeyboardInterrupt(player):
+    print("paused by KeyboardInterrupt")
+    player.edit()
+
 def fight(player, target, speed=config.game_speed):
     """Start one fight, 
     Will break out of loop when either the player or target dies, 
     or if a KeyboardInterrupt occurs."""
     try:
-        while True:
-            attack_round(player, target)
-            time.sleep(speed)
-    except exceptions.DeathException as exception:
-        print(exception.msg_str)
-        exception.attack.attacker.win_against(exception.caller)
-        if config.pause_on_fight: 
-            player.edit()
+        try: 
+            while True:
+                attack_round(player, target)
+                time.sleep(speed)
+
+        except exceptions.DeathException as exception:
+            print(exception.msg_str)
+            exception.attack.attacker.win_against(exception.caller)
+            if config.pause_on_fight: 
+                player.edit()
+            print("next fight in")
+            for x in range(config.time_between_fights, 0, -1):
+                print("  {}".format(x))
+                time.sleep(1)
     except KeyboardInterrupt:
-        print("paused by KeyboardInterrupt")
-        player.edit()
+        on_KeyboardInterrupt(player)
 
     player.full_regen()
     target = player.zone.create_mob(player)
-    print("next fight in")
-    for x in range(config.time_between_fights, 0, -1):
-        print("  {}".format(x))
-        time.sleep(1)
     fight(player, target, speed)
