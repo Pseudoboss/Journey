@@ -56,13 +56,13 @@ class Entity:
         damage = random.choice(self.damage_range)
         attack = generics.Attack(self, damage)
         try:
-            target.take_damage(attack)
+            target.take_attack(attack)
         except exceptions.DeathException as death:
-            self.win_against(target)
+            self.on_win(target)
             raise death
         return attack
 
-    def take_damage(self, attack):
+    def take_attack(self, attack):
         """Take the provided amount of damage."""
         self.health -= attack.damage
         if self.health <= 0:
@@ -73,7 +73,7 @@ class Entity:
         """Die, raise DeathException to be handled elsewhere."""
         raise exceptions.DeathException(self, attack)
 
-    def win_against(self, target):
+    def on_win(self, target):
         """Called when the Entity kills a target."""
         pass
 

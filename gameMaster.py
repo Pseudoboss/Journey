@@ -43,7 +43,7 @@ def fight(player, target, speed=config.game_speed):
 
         except exceptions.DeathException as exception:
             print(exception.msg_str)
-            exception.attack.attacker.win_against(exception.caller)
+            exception.attack.attacker.on_win(exception.caller)
             if config.pause_on_fight: 
                 player.edit()
             print("next fight in")

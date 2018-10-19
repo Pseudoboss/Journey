@@ -37,7 +37,7 @@ edit_prompt = "Provide a string to allocate points.\n"\
               "  Every 's' adds a point to strength,\n"\
               "  every 'c' adds a point to constitution.\n"\
               "  The character 'e' and the empty string exits.\n"\
-              "  And 'q' quits the game."
+              "  And 'q' quits the game.\n"
 # The characters in the edit strings 
 # to allocate stat points or exit edit mode.
 add_strength_chars = ['s', 'r']

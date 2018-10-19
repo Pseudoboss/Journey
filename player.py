@@ -28,7 +28,7 @@ class Player(entity.Entity):
         self.stats = { "strength": self.strength
                      , "constitution": self.constitution}
 
-    def win_against(self, target):
+    def on_win(self, target):
         """Called when the Entity kills a target."""
         self.xp += target.xp
         self.check_for_level_up()
