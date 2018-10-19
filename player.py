@@ -90,6 +90,9 @@ class Player(entity.Entity):
                 edit = False
                 break
 
+            elif char in config.quit_chars:
+                quit()
+
             if self.free_points <= 0:
                 edit = False
                 break

@@ -11,6 +11,7 @@ A game that plays itself.
 ### Playing
 Pass a KeyboardInterrupt (ctrl+C by default) to allocate stats and enter edit mode.
 You can change when edit mode is entered in config.py.
+Exit the game by entering edit mode, and entering `q`.
 
 ## Version
 

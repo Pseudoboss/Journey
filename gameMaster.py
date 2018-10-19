@@ -36,7 +36,7 @@ def fight(player, target, speed=config.game_speed):
     Will break out of loop when either the player or target dies, 
     or if a KeyboardInterrupt occurs."""
     try:
-        try: 
+        try:
             while True:
                 attack_round(player, target)
                 time.sleep(speed)
