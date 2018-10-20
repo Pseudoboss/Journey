@@ -37,10 +37,15 @@ edit_prompt = "Provide a string to allocate points.\n"\
               "  Every 's' adds a point to strength,\n"\
               "  every 'c' adds a point to constitution.\n"\
               "  The character 'e' and the empty string exits.\n"\
+              "  'z' changes zones.\n"\
               "  And 'q' quits the game.\n"
-# The characters in the edit strings 
+# The characters in the edit strings
+# when a key needs to be generated on-the-fly 
+# (e.g. for a zone list), this is where they're picked from.
+key_order = list('asdfqwerzxcvgtbhyn')
 # to allocate stat points or exit edit mode.
 add_strength_chars = ['s', 'r']
 add_constitution_chars = ['c', 'n']
 exit_chars = ['e', 'x']
 quit_chars = ['q']
+zone_chars = ['z']

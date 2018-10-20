@@ -7,8 +7,17 @@ import entity
 import zones
 
 def attack_round(attacker, target):
-    """the attacker and target both attack, 
-    the result is formatted and printed."""
+    """Format and print both the attacker and target attacking.
+
+    Parameters
+    ----------
+    attacker : Entity or subclass of Entity
+        The Entity that goes first in the round.
+        Is attacked by the target
+    target : Entity or subclass of Entity
+        The Entity being attacked by the target
+
+    """
     attacker_attack = attacker.attack(target)
     target_attack = target.attack(attacker)
 
@@ -28,13 +37,29 @@ def attack_round(attacker, target):
                           , target_string))
 
 def on_KeyboardInterrupt(player):
+    """Called whenever the a KeyboardInterrupt occurs."""
     print("paused by KeyboardInterrupt")
     player.edit()
 
 def fight(player, target, speed=config.game_speed):
-    """Start one fight, 
-    Will break out of loop when either the player or target dies, 
-    or if a KeyboardInterrupt occurs."""
+    """Loop attack_rounds until there is a victor, handle interrupts as they occur.
+
+    TODO
+    ----
+    Separate this function between the fight loop and interrupt handling.
+
+    Parameters
+    ----------
+    player : Player
+        The player that is currently fighting.
+        Will be attacked by target.
+    target : Entity
+        The target that player is attacking.
+        Will be attacked by player.
+    speed : float
+        delay between iterations in seconds.
+
+    """
     try:
         try:
             while True:
